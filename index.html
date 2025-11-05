@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva: Package Managers en Python</title>
+    <style>
+        /* === ESTILOS GLOBALES Y DE ESCRITORIO === */
+        body {
+            font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0;
+            padding: 40px; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; box-sizing: border-box; transition: padding 0.3s ease;
+        }
+
+        .slideshow-container { position: relative; width: 90%; max-width: 960px; }
+        
+        .slide {
+            display: none; background-color: #fff; border: 1px solid #ccc;
+            height: 540px; padding: 40px 60px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            flex-direction: column; justify-content: center; position: relative;
+            box-sizing: border-box;
+        }
+
+        .fade { animation-name: fade; animation-duration: 0.5s; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background-color: #cccccc; color: #333;
+            border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 24px; transition: all 0.3s ease;
+            user-select: none; z-index: 10;
+        }
+
+        .prev { left: -70px; }
+        .next { right: -70px; }
+        .prev:hover, .next:hover { background-color: #aaaaaa; }
+
+        .slide h1 { font-size: 3.5em; text-align: center; border-bottom: 4px solid #11a800; padding-bottom: 20px; color: #005A9C; }
+        .slide h2 { font-size: 2.8em; margin-top: 0; margin-bottom: 30px; text-align: center; color: #005A9C; }
+        .single-content { text-align: center; }
+        .single-content p { font-size: 1.5em; color: #444; }
+        .single-content pre { font-size: 1.3em; display: inline-block; text-align: left; max-width: 100%; }
+        pre { background-color: #2d3436; color: #fff; padding: 15px; border-radius: 5px; font-size: 1.1em; white-space: pre-wrap; }
+        .footer { position: absolute; bottom: 20px; right: 40px; font-size: 1em; color: #888; }
+
+        /* === MEDIA QUERIES === */
+        @media screen and (max-width: 768px) {
+            body { padding: 15px; }
+            .slideshow-container { width: 100%; padding-bottom: 75px; }
+            .slide { height: auto; min-height: 75vh; padding: 20px 25px; }
+            .prev, .next { top: auto; bottom: 15px; width: 45px; height: 45px; }
+            .prev { left: 50%; transform: translateX(-110%); }
+            .next { left: 50%; transform: translateX(10%); right: auto; }
+            .slide h1 { font-size: 2.2em; }
+            .slide h2 { font-size: 1.8em; }
+            .single-content p { font-size: 1.1em; }
+            .single-content pre { font-size: 1em; }
+            .footer { font-size: 0.8em; right: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        
+        <div class="slide fade">
+            <h1>Cheat Sheet de Python</h1>
+            <h2 style="color:#333; border:none;">Package Managers</h2>
+            <div class="footer">1 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>¿Qué es un Gestor de Paquetes?</h2>
+            <div class="single-content"><p>Una herramienta que automatiza el proceso de instalar, actualizar, configurar y eliminar librerías de código creadas por terceros.</p></div>
+            <div class="footer">2 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>PyPI: El Almacén Central</h2>
+            <div class="single-content"><p>Python Package Index (pypi.org) es el repositorio oficial con cientos de miles de paquetes listos para descargar.</p></div>
+            <div class="footer">3 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>pip: El Instalador Estándar</h2>
+            <div class="single-content"><p>`pip` es la herramienta por defecto de Python para instalar paquetes desde PyPI. Viene incluido con Python.</p></div>
+            <div class="footer">4 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Comando: <code>pip install</code></h2>
+            <div class="single-content"><p>Descarga e instala la última versión de un paquete y sus dependencias.</p><pre><code>pip install requests
+pip install pandas</code></pre></div>
+            <div class="footer">5 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Especificar Versiones</h2>
+            <div class="single-content"><p>Puedes solicitar una versión exacta o mínima de un paquete.</p><pre><code>pip install numpy==1.26.4  # Versión exacta
+pip install "requests>=2.31" # Versión mínima</code></pre></div>
+            <div class="footer">6 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Listar y Mostrar: <code>pip list</code></h2>
+            <div class="single-content"><p>Comandos para ver qué tienes instalado en tu entorno actual.</p><pre><code>pip list # Muestra todos los paquetes instalados
+pip show requests # Muestra detalles de un paquete</code></pre></div>
+            <div class="footer">7 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Desinstalar: <code>pip uninstall</code></h2>
+            <div class="single-content"><p>Elimina un paquete de tu entorno.</p><pre><code>pip uninstall pandas</code></pre></div>
+            <div class="footer">8 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>El Archivo <code>requirements.txt</code></h2>
+            <div class="single-content"><p>Un archivo estándar para listar todas las dependencias de un proyecto y sus versiones específicas.</p><pre><code>requests==2.31.0
+numpy>=1.26.0
+pandas==2.2.0</code></pre></div>
+            <div class="footer">9 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Usar <code>requirements.txt</code></h2>
+            <div class="single-content"><p>Para guardar tus dependencias actuales y para instalarlas en otro lugar.</p><pre><code># Guardar dependencias actuales
+pip freeze > requirements.txt
+
+# Instalar desde el archivo
+pip install -r requirements.txt</code></pre></div>
+            <div class="footer">10 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Contexto: Entornos Virtuales</h2>
+            <div class="single-content"><p>Es vital usar `pip` dentro de entornos virtuales (`venv`) para aislar las dependencias de cada proyecto y evitar conflictos.</p></div>
+            <div class="footer">11 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Conda: La Alternativa</h2>
+            <div class="single-content"><p>Es tanto un gestor de paquetes como de entornos. Muy popular en ciencia de datos. Instala binarios precompilados.</p><pre><code>conda install numpy
+conda install pandas</code></pre></div>
+            <div class="footer">12 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Conda Channels</h2>
+            <div class="single-content"><p>Conda usa "canales" (repositorios). `conda-forge` es un canal comunitario muy popular.</p><pre><code>conda install -c conda-forge jupyterlab</code></pre></div>
+            <div class="footer">13 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>pip vs. Conda</h2>
+            <div class="single-content"><p><strong>pip:</strong> Solo paquetes de Python. Usa PyPI. Compila si es necesario.<br><strong>Conda:</strong> Paquetes de cualquier lenguaje. Usa sus propios canales. Binarios listos.</p></div>
+            <div class="footer">14 / 16</div>
+        </div>
+
+        <div class="slide fade">
+            <h2>Alternativas Modernas</h2>
+            <div class="single-content"><p>Herramientas como <strong>Poetry</strong> y <strong>Pipenv</strong> combinan la gestión de paquetes y entornos virtuales con una experiencia de desarrollador mejorada.</p></div>
+            <div class="footer">15 / 16</div>
+        </div>
+        
+        <div class="slide fade">
+            <h2>Conclusión</h2>
+            <div class="single-content"><p><code>pip</code> con entornos virtuales es el estándar. <code>conda</code> es excelente para ciencia de datos con dependencias complejas.</p></div>
+            <div class="footer">16 / 16</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1 } 
+            if (n < 1) { slideIndex = slides.length }
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            slides[slideIndex - 1].style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
